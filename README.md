@@ -15,12 +15,12 @@
 ```
 
 ### ENV переменные
-USERNAME=db_user
-PASSWORD=password
-HOST=localhost
-PORT=5432
-DB=fastify
-SECRET=somesecret
+##### USERNAME=db_user
+##### PASSWORD=password
+##### HOST=localhost
+##### PORT=5432
+##### DB=fastify
+##### SECRET=somesecret
    
 ## Запуск проекта
 ```bash
