@@ -5,7 +5,7 @@
 
 
 ## Установка зависимостей 
-Для данного приложения обязательнно предварительнная установка Node.js, npm, nodemon - глобально
+Для данного приложения обязательнно предварительнно установить глобально Node.js, npm, nodemon 
 
 ## Установка локальных зависимостей 
 
@@ -13,6 +13,14 @@
   cd .
   npm i
 ```
+
+### ENV переменные
+USERNAME=db_user
+PASSWORD=password
+HOST=localhost
+PORT=5432
+DB=fastify
+SECRET=somesecret
    
 ## Запуск проекта
 ```bash
@@ -46,6 +54,17 @@
 | :-------- | :------- | :------------------------- |
 | `email` | `string` | **Required**. g@gmail.com |
 | `user_password` | `string` | **Required**. password |
+
+![App Screenshot](./assests/login_token.png)
+#### Нам возвращается токен, который нам нужно будет скопировать
+
+## Личный кабинет
+
+```http
+  GET /products/profile
+```
+![App Screenshot](./assests/profile.png)
+#### !Обязательно внести токен
 
 
 ## Доступные продукты

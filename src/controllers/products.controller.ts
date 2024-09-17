@@ -51,10 +51,12 @@ export const products = async (request: any, reply: any) => {
 };
 
 
-// Example protected route
+// User profile  protected route
 export const profile = async (request: any, reply: any) => {
-    const user = request.user; // user data added by authenticate hook
-    reply.send({ user });
+    const id = request.user; // user data added by authenticate hook
+    const user = await fastify.pg.query("SELECT * FROM clients;")
+    //reply.send(user.rows[0]);
+    reply.send(request.user)
 };
 
 

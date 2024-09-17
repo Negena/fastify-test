@@ -18,7 +18,7 @@ fastify.register(require('@fastify/postgres'), {
 
 //AUTH REGISTRATION
 fastify.register(fastifyJwt, {
-    secret: 'somesecret' // Replace with a strong secret
+    secret: process.env.SECRET // Replace with a strong secret
 });
 
 
