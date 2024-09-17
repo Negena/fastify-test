@@ -2,6 +2,7 @@ import fastifyJwt from "@fastify/jwt";
 import axios from "axios";
 import bcrypt from "bcryptjs"
 import * as dotenv from 'dotenv';
+import { FastifyReply, FastifyRequest } from "fastify";
 import authRoutes from "./routes/auth.router";
 import productRoutes from "./routes/products.router";
 
@@ -23,13 +24,14 @@ fastify.register(fastifyJwt, {
 
 
 // AUTH-DECORATOR
-fastify.decorate('authenticate', async (request: any, reply: any) => {
+fastify.decorate('authenticate', async (request: FastifyRequest, reply: FastifyReply) => {
     try {
         await request.jwtVerify();
     } catch (err) {
         reply.send(err);
     }
 });
+
 
 
 //AUTH-ROUTE

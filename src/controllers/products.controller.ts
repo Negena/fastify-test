@@ -1,11 +1,12 @@
 import axios from "axios";
+import { FastifyReply, FastifyRequest } from "fastify";
 import NodeCache from "node-cache";
 import fastify from "../index"
 const cache = new NodeCache({ stdTTL: 3600 }); // Cache for 1 hour
 
 
-//caching 
-// Utility function to handle caching
+//CACHING 
+// HANDLING CACHING
 async function cacheWrapper(cacheKey: any, fetchData: any) {
     const cachedData = cache.get(cacheKey);
     if (cachedData) {
@@ -19,7 +20,7 @@ async function cacheWrapper(cacheKey: any, fetchData: any) {
 
 
 //GET CLIENTS
-export const clients = async (request: any, reply: any) => {
+export const clients = async (request: FastifyRequest, reply: FastifyReply) => {
     try {
         const clients = await fastify.pg.query('SELECT * FROM clients');
         reply.send(clients.rows);
@@ -32,7 +33,7 @@ export const clients = async (request: any, reply: any) => {
 
 
 //BUY PRODUCTS 
-export const products = async (request: any, reply: any) => {
+export const products = async (request: FastifyRequest, reply: FastifyReply) => {
     const cacheKey = 'skinport_items';
 
     try {
@@ -51,17 +52,16 @@ export const products = async (request: any, reply: any) => {
 };
 
 
-// User profile  protected route
-export const profile = async (request: any, reply: any) => {
+//USER PROFILE
+export const profile = async (request: FastifyRequest, reply: FastifyReply) => {
     const id = request.user; // user data added by authenticate hook
     const user = await fastify.pg.query("SELECT * FROM clients;")
-    //reply.send(user.rows[0]);
-    reply.send(request.user)
+    reply.send(user.rows[0]);
 };
 
 
 
-//deduct PRODUCTS 
+//DEDUCT PRODUCTS 
 export const deduct = async (request: any, reply: any) => {
     const id = request.user.id;
     const { market_hash_name, tradable } = request.body as { market_hash_name: string; tradable: boolean };

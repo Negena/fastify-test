@@ -62,7 +62,10 @@ SECRET=somesecret
 
 ```http
   GET /products/profile
+  Authorization: Bearer <your-token>
 ```
+
+
 ![App Screenshot](./assests/profile.png)
 #### !Обязательно внести токен
 
@@ -79,6 +82,7 @@ SECRET=somesecret
 
 ```http
   GET /products/clients
+  Authorization: Bearer <your-token>
 ```
 ![App Screenshot](./assests/login_token.png)
 
@@ -89,7 +93,8 @@ SECRET=somesecret
 ## Покупка продукта
 
 ```http
-  GET /products/deduct
+  PUT /products/deduct
+  Authorization: Bearer <your-token>
 ```
 
 ![App Screenshot](./assests/buy_token.png)

@@ -1,10 +1,11 @@
 import fastify from "../index"
 import bcrypt from "bcryptjs"
+import { FastifyReply, FastifyRequest } from "fastify";
 
 
 
 //REGISTER A CLIENT ROUTE
-export const register = async (request: any, reply: any) => {
+export const register = async (request: FastifyRequest, reply: FastifyReply) => {
     const { username, email, user_password, balance } = request.body as {
         username: string;
         email: string;
@@ -36,7 +37,7 @@ export const register = async (request: any, reply: any) => {
 
 
 //LOGIN A CLIENT ROUTE
-export const login = async (request: any, reply: any) => {
+export const login = async (request: FastifyRequest, reply: FastifyReply) => {
     const { email, user_password } = request.body as {
         email: string;
         user_password: string;
